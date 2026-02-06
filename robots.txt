@@ -1,0 +1,6 @@
+Propriété de : TNSAgency | Créé par : TheNumericSpirit
+
+User-agent: *
+Allow: /
+
+Sitemap: https://www.google.com/search?q=https://tnsagency.github.io/sitemap.xml

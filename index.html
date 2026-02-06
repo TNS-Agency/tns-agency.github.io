@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TNSAgency - Agence Web Internationale</title>
+    
+    <!-- Meta Tags -->
+    <meta name="description" content="TNSAgency : Expertise digitale globale en Conception Web, Design et IA.">
+    <meta name="author" content="TheNumericSpirit">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* ═══════════════════════════════════════════════════
+        Property of: TNSAgency
+        Author: TheNumericSpirit
+        ═══════════════════════════════════════════════════
+        */
+
+        :root {
+            --primary: #2563eb;
+            --secondary: #10b981;
+            --dark-bg: #0f172a;
+            --dark-card: #1e293b;
+            --light-bg: #ffffff;
+            --light-card: #f8fafc;
+            --transition: all 0.3s ease;
+            
+            /* Default Light Theme */
+            --bg: var(--light-bg);
+            --text: #334155;
+            --text-muted: #64748b;
+            --card-bg: #ffffff;
+            --header-bg: rgba(255, 255, 255, 0.9);
+            --border: #e2e8f0;
+        }
+
+        [data-theme="dark"] {
+            --bg: var(--dark-bg);
+            --text: #f1f5f9;
+            --text-muted: #94a3b8;
+            --card-bg: var(--dark-card);
+            --header-bg: rgba(15, 23, 42, 0.9);
+            --border: #334155;
+        }
+
+        [lang="ar"] {
+            direction: rtl;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            transition: var(--transition);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        /* --- Header & Nav --- */
+        header {
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            background: var(--header-bg);
+            backdrop-filter: blur(10px);
+            padding: 1rem 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-controls {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        /* --- Theme & Lang Toggles --- */
+        .btn-icon {
+            background: none;
+            border: 1px solid var(--border);
+            color: var(--text);
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+
+        .btn-icon:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+        }
+
+        select.lang-select {
+            background: var(--card-bg);
+            color: var(--text);
+            border: 1px solid var(--border);
+            padding: 0.5rem;
+            border-radius: 8px;
+            outline: none;
+            cursor: pointer;
+        }
+
+        /* --- Hero Section --- */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            padding-top: 80px;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .hero-location-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--primary);
+            font-weight: 600;
+            margin-bottom: 1rem;
+            height: 30px;
+        }
+
+        .location-item {
+            display: none;
+            animation: fadeIn 0.5s ease forwards;
+        }
+
+        .location-item.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* --- Services --- */
+        .services {
+            padding: 100px 0;
+            background: var(--light-card);
+        }
+        [data-theme="dark"] .services { background: #0b1120; }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .service-card {
+            background: var(--card-bg);
+            padding: 2.5rem;
+            border-radius: 20px;
+            border: 1px solid var(--border);
+            transition: var(--transition);
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary);
+        }
+
+        .service-card i {
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+        }
+
+        /* --- Stats --- */
+        .stats {
+            padding: 80px 0;
+            background: var(--dark-bg);
+            color: white;
+            text-align: center;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .stat-item h3 {
+            font-size: 3rem;
+            color: var(--primary);
+        }
+
+        /* --- Buttons --- */
+        .btn {
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-block;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+        }
+
+        .btn-whatsapp {
+            background: var(--secondary);
+            color: white;
+            margin-top: 1rem;
+        }
+
+        /* --- Responsive --- */
+        @media (max-width: 768px) {
+            .stats-grid { grid-template-columns: 1fr; }
+            .hero { text-align: center; }
+            .hero-location-wrapper { justify-content: center; }
+        }
+    </style>
+</head>
+<body data-theme="light">
+
+    <header>
+        <div class="container nav">
+            <a href="#" class="logo">TNSAgency</a>
+            <div class="nav-controls">
+                <select class="lang-select" onchange="changeLang(this.value)" id="langSelect">
+                    <option value="fr">Français</option>
+                    <option value="en">English</option>
+                    <option value="ar">داريجة</option>
+                </select>
+                <button class="btn-icon" onclick="toggleTheme()" id="themeBtn">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <div class="hero-location-wrapper">
+                <i class="fas fa-location-dot"></i>
+                <div id="location-scroller">
+                    <span class="location-item active">Montréal, Canada</span>
+                    <span class="location-item">Casablanca, Maroc</span>
+                    <span class="location-item">Paris, France</span>
+                    <span class="location-item">Kinshasa, RDC</span>
+                </div>
+            </div>
+            <h1 id="hero-title">Propulsez votre Vision Digitale</h1>
+            <p id="hero-desc">Nous transformons vos idées complexes en solutions web innovantes, minimalistes et performantes partout dans le monde.</p>
+            <a href="https://wa.me/212684146032" class="btn btn-whatsapp">
+                <i class="fab fa-whatsapp"></i> <span id="btn-wa">Conseil Gratuit</span>
+            </a>
+        </div>
+    </section>
+
+    <section class="services">
+        <div class="container">
+            <h2 id="services-title" style="text-align: center;">Nos Piliers d'Expertise</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <i class="fas fa-laptop-code"></i>
+                    <h3 id="s1-title">Conception Web</h3>
+                    <p id="s1-desc">Développement de sites vitrine et e-commerce haute performance.</p>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-bezier-curve"></i>
+                    <h3 id="s2-title">Design & Branding</h3>
+                    <p id="s2-desc">Création d'identités visuelles fortes et interfaces intuitives.</p>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-microchip"></i>
+                    <h3 id="s3-title">Automatisation & IA</h3>
+                    <p id="s3-desc">Intégration de solutions intelligentes pour votre productivité.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="stats">
+        <div class="container stats-grid">
+            <div class="stat-item">
+                <h3 class="counter" data-target="50">0</h3>
+                <p id="stat-1">Projets Réalisés</p>
+            </div>
+            <div class="stat-item">
+                <h3 class="counter" data-target="100">0</h3>
+                <p id="stat-2">Clients Satisfaits</p>
+            </div>
+            <div class="stat-item">
+                <h3 class="counter" data-target="12">0</h3>
+                <p id="stat-3">Ans d'Expertise</p>
+            </div>
+        </div>
+    </section>
+
+    <footer style="padding: 40px 0; text-align: center; border-top: 1px solid var(--border);">
+        <p>© 2024 TNSAgency - Created by TheNumericSpirit</p>
+    </footer>
+
+    <script>
+        /* Property of: TNSAgency
+        Author: TheNumericSpirit
+        */
+
+        // --- Translations ---
+        const translations = {
+            fr: {
+                heroTitle: "Propulsez votre Vision Digitale",
+                heroDesc: "Nous transformons vos idées complexes en solutions web innovantes, minimalistes et performantes partout dans le monde.",
+                btnWa: "Conseil Gratuit",
+                servicesTitle: "Nos Piliers d'Expertise",
+                s1Title: "Conception Web",
+                s1Desc: "Développement de sites vitrine et e-commerce haute performance.",
+                s2Title: "Design & Branding",
+                s2Desc: "Création d'identités visuelles fortes et interfaces intuitives.",
+                s3Title: "Automatisation & IA",
+                s3Desc: "Intégration de solutions intelligentes pour votre productivité.",
+                stat1: "Projets Réalisés",
+                stat2: "Clients Satisfaits",
+                stat3: "Ans d'Expertise"
+            },
+            en: {
+                heroTitle: "Power Up Your Digital Vision",
+                heroDesc: "We transform complex ideas into innovative, minimalist, and high-performance web solutions worldwide.",
+                btnWa: "Free Advice",
+                servicesTitle: "Our Pillars of Expertise",
+                s1Title: "Web Design",
+                s1Desc: "High-performance showcase and e-commerce website development.",
+                s2Title: "Design & Branding",
+                s2Desc: "Creating strong visual identities and intuitive interfaces.",
+                s3Title: "Automation & AI",
+                s3Desc: "Integrating smart solutions to boost your productivity.",
+                stat1: "Completed Projects",
+                stat2: "Satisfied Clients",
+                stat3: "Years of Expertise"
+            },
+            ar: {
+                heroTitle: "طور الرؤية ديالك للعالم الرقمي",
+                heroDesc: "كنحولو الأفكار ديالك لحلول ويب مبتكرة وناجحة فالعالم كامل.",
+                btnWa: "استشارة فابور",
+                servicesTitle: "ركائز الخبرة ديالنا",
+                s1Title: "كانصايبو ليك الموقع ديالك",
+                s1Desc: "مختصين في مواقع و العلامات التجارية الالكترونية الاكثر آداء و شعبية",
+                s2Title: "الديزاين واللوغو",
+                s2Desc: "كنرسمو ليك الهوية ديالك بديزاين متناسب مع روح المقاولة ديالك و جذاب",
+                s3Title: "الذكاء الاصطناعي",
+                s3Desc: "كنخدمو تقنيات ذكية باش تربح الوقت وتزيد فالخدمة.",
+                stat1: "مشروع كملناه",
+                stat2: "كليان فرحانين",
+                stat3: "عام ديال الخبرة"
+            }
+        };
+
+        // --- Change Language ---
+        function changeLang(lang) {
+            document.documentElement.lang = lang;
+            const t = translations[lang];
+            
+            document.getElementById('hero-title').innerText = t.heroTitle;
+            document.getElementById('hero-desc').innerText = t.heroDesc;
+            document.getElementById('btn-wa').innerText = t.btnWa;
+            document.getElementById('services-title').innerText = t.servicesTitle;
+            document.getElementById('s1-title').innerText = t.s1Title;
+            document.getElementById('s1-desc').innerText = t.s1Desc;
+            document.getElementById('s2-title').innerText = t.s2Title;
+            document.getElementById('s2-desc').innerText = t.s2Desc;
+            document.getElementById('s3-title').innerText = t.s3Title;
+            document.getElementById('s3-desc').innerText = t.s3Desc;
+            document.getElementById('stat-1').innerText = t.stat1;
+            document.getElementById('stat-2').innerText = t.stat2;
+            document.getElementById('stat-3').innerText = t.stat3;
+
+            localStorage.setItem('tns-lang', lang);
+        }
+
+        // --- Theme Toggle ---
+        function toggleTheme() {
+            const body = document.body;
+            const icon = document.querySelector('#themeBtn i');
+            const isDark = body.getAttribute('data-theme') === 'dark';
+            
+            body.setAttribute('data-theme', isDark ? 'light' : 'dark');
+            icon.className = isDark ? 'fas fa-moon' : 'fas fa-sun';
+            localStorage.setItem('tns-theme', isDark ? 'light' : 'dark');
+        }
+
+        // --- Location Scroller ---
+        function initScroller() {
+            const items = document.querySelectorAll('.location-item');
+            let idx = 0;
+            setInterval(() => {
+                items[idx].classList.remove('active');
+                idx = (idx + 1) % items.length;
+                items[idx].classList.add('active');
+            }, 3000);
+        }
+
+        // --- Counter Animation ---
+        function initCounters() {
+            const counters = document.querySelectorAll('.counter');
+            counters.forEach(c => {
+                const target = +c.dataset.target;
+                const update = () => {
+                    const current = +c.innerText;
+                    const inc = target / 50;
+                    if(current < target) {
+                        c.innerText = Math.ceil(current + inc);
+                        setTimeout(update, 30);
+                    } else {
+                        c.innerText = target + (target === 100 ? '%' : '+');
+                    }
+                };
+                update();
+            });
+        }
+
+        // --- Load Prefs ---
+        window.onload = () => {
+            const savedTheme = localStorage.getItem('tns-theme') || 'light';
+            const savedLang = localStorage.getItem('tns-lang') || 'fr';
+            
+            document.body.setAttribute('data-theme', savedTheme);
+            document.querySelector('#themeBtn i').className = savedTheme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
+            
+            document.getElementById('langSelect').value = savedLang;
+            changeLang(savedLang);
+            
+            initScroller();
+            initCounters();
+        };
+    </script>
+</body>
+</html>
