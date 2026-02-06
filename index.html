@@ -22,7 +22,7 @@
         */
 
         :root {
-            --primary: #2563eb;
+            --primary: #FFD700;
             --secondary: #10b981;
             --dark-bg: #0f172a;
             --dark-card: #1e293b;
@@ -30,16 +30,7 @@
             --light-card: #f8fafc;
             --transition: all 0.3s ease;
             
-            /* Default Light Theme */
-            --bg: var(--light-bg);
-            --text: #334155;
-            --text-muted: #64748b;
-            --card-bg: #ffffff;
-            --header-bg: rgba(255, 255, 255, 0.9);
-            --border: #e2e8f0;
-        }
-
-        [data-theme="dark"] {
+            /* Dark Theme (Only Mode) */
             --bg: var(--dark-bg);
             --text: #f1f5f9;
             --text-muted: #94a3b8;
@@ -84,7 +75,6 @@
             background: var(--header-bg);
             backdrop-filter: blur(10px);
             padding: 1rem 0;
-            border-bottom: 1px solid var(--border);
         }
 
         nav {
@@ -97,6 +87,9 @@
             display: flex;
             align-items: center;
             gap: 1.5rem;
+            position: absolute;
+            right: 1.5rem;
+            top: 1rem;
         }
 
         .logo {
@@ -104,6 +97,9 @@
             color: var(--primary);
             text-decoration: none;
             font-weight: 700;
+            position: absolute;
+            left: 1.5rem;
+            top: 1rem;
         }
 
         /* --- Theme & Lang Toggles --- */
@@ -177,9 +173,8 @@
         /* --- Services --- */
         .services {
             padding: 100px 0;
-            background: var(--light-card);
+            background: #0b1120;
         }
-        [data-theme="dark"] .services { background: #0b1120; }
 
         .services-grid {
             display: grid;
@@ -249,6 +244,30 @@
             margin-top: 1rem;
         }
 
+        /* Vanta hero background layering */
+        .hero {
+            position: relative;
+            overflow: hidden;
+        }
+        .hero canvas {
+            position: absolute !important;
+            top: 0;
+            left: 0;
+            width: 100% !important;
+            height: 100% !important;
+            z-index: 0;
+            opacity: 0.6; /* ~40% more transparent */
+        }
+        .hero .container {
+            position: relative;
+            z-index: 1;
+            transform: translateY(-4rem); /* lift content up for readability */
+        }
+
+        @media (max-width: 768px) {
+            .hero .container { transform: translateY(-2rem); }
+        }
+
         /* --- Responsive --- */
         @media (max-width: 768px) {
             .stats-grid { grid-template-columns: 1fr; }
@@ -257,20 +276,17 @@
         }
     </style>
 </head>
-<body data-theme="light">
+<body>
 
     <header>
         <div class="container nav">
             <a href="#" class="logo">TNSAgency</a>
             <div class="nav-controls">
                 <select class="lang-select" onchange="changeLang(this.value)" id="langSelect">
-                    <option value="fr">Français</option>
-                    <option value="en">English</option>
-                    <option value="ar">داريجة</option>
+                    <option value="fr">🇫🇷 Français</option>
+                    <option value="en">🇬🇧 English</option>
+                    <option value="ar">🇲🇦 داريجة</option>
                 </select>
-                <button class="btn-icon" onclick="toggleTheme()" id="themeBtn">
-                    <i class="fas fa-moon"></i>
-                </button>
             </div>
         </div>
     </header>
@@ -414,17 +430,6 @@
             localStorage.setItem('tns-lang', lang);
         }
 
-        // --- Theme Toggle ---
-        function toggleTheme() {
-            const body = document.body;
-            const icon = document.querySelector('#themeBtn i');
-            const isDark = body.getAttribute('data-theme') === 'dark';
-            
-            body.setAttribute('data-theme', isDark ? 'light' : 'dark');
-            icon.className = isDark ? 'fas fa-moon' : 'fas fa-sun';
-            localStorage.setItem('tns-theme', isDark ? 'light' : 'dark');
-        }
-
         // --- Location Scroller ---
         function initScroller() {
             const items = document.querySelectorAll('.location-item');
@@ -457,11 +462,7 @@
 
         // --- Load Prefs ---
         window.onload = () => {
-            const savedTheme = localStorage.getItem('tns-theme') || 'light';
             const savedLang = localStorage.getItem('tns-lang') || 'fr';
-            
-            document.body.setAttribute('data-theme', savedTheme);
-            document.querySelector('#themeBtn i').className = savedTheme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
             
             document.getElementById('langSelect').value = savedLang;
             changeLang(savedLang);
@@ -470,5 +471,28 @@
             initCounters();
         };
     </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+        <script src="https://unpkg.com/vanta@latest/dist/vanta.birds.min.js"></script>
+        <script>
+        VANTA.BIRDS({
+            el: ".hero",
+            mouseControls: true,
+            touchControls: true,
+            gyroControls: false,
+            minHeight: 200.00,
+            minWidth: 200.00,
+            scale: 1.00,
+            scaleMobile: 1.00,
+            color1: 0xffd100,
+            color2: 0xff8700,
+            colorMode: "lerpGradient",
+            birdSize: 0.70,
+            wingSpan: 37.00,
+            speedLimit: 3.00,
+            separation: 75.00,
+            alignment: 67.00,
+            cohesion: 66.00
+        })
+        </script>
 </body>
 </html>
