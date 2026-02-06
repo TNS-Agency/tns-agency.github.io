@@ -1,0 +1,35 @@
+{
+  "@context": "[https://schema.org](https://schema.org)",
+  "@type": "ProfessionalService",
+  "name": "TNS Agency",
+  "alternateName": "TheNumericSpirit Agency",
+  "url": "[https://votre-domaine.com](https://votre-domaine.com)",
+  "logo": "[https://votre-domaine.com/logo.png](https://votre-domaine.com/logo.png)",
+  "description": "Agence web internationale spécialisée en conception web, IA et automatisation n8n. Bureaux à Montréal, Casablanca, Paris et Kinshasa.",
+  "address": [
+    {
+      "@type": "PostalAddress",
+      "addressLocality": "Casablanca",
+      "addressCountry": "MA"
+    },
+    {
+      "@type": "PostalAddress",
+      "addressLocality": "Montréal",
+      "addressCountry": "CA"
+    }
+  ],
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "telephone": "+212684146032",
+    "contactType": "customer service",
+    "availableLanguage": ["French", "English", "Arabic"]
+  },
+  "sameAs": [
+    "[https://www.linkedin.com/in/votre-profil](https://www.linkedin.com/in/votre-profil)",
+    "[https://github.com/votre-profil](https://github.com/votre-profil)"
+  ],
+  "author": {
+    "@type": "Person",
+    "name": "TheNumericSpirit"
+  }
+}
